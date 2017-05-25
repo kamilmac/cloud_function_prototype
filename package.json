@@ -1,0 +1,21 @@
+{
+  "name": "cloudFunc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "config": {
+    "project": "bwater-2801",
+    "name": "cloudFunc",
+    "bucket": "bwater-functions",
+    "test": "test.json"
+  },
+  "scripts": {
+    "start": "gcloud config set project $npm_package_config_project ;functions-emulator start",
+    "deploy": "functions-emulator deploy $npm_package_config_name --trigger-http",
+    "test": "functions-emulator call $npm_package_config_name --file=$npm_package_config_test",
+    "stop": "functions-emulator stop",
+    "kill": "functions-emulator kill",
+    "logs": "functions-emulator logs read",
+    "deploy:prod": "gcloud beta functions deploy $npm_package_config_name --stage-bucket $npm_package_config_bucket --trigger-http"
+  },
+  "license": "MIT"
+}
